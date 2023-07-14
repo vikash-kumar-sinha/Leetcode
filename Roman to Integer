@@ -1,0 +1,45 @@
+class Solution {
+    private:
+    int num(char a){
+       switch(a)
+       {
+           case 'I':return 1;
+           break;
+           case 'V':return 5;
+           break;
+           case 'X':return 10;
+           break;
+           case 'L':return 50;
+           break;
+           case 'C':return 100;
+           break;
+           case 'D':return 500;
+           break;
+           case 'M': return 1000;
+           break;
+           default: return 0;
+           
+       }
+   }
+public:
+
+   
+   
+    int romanToInt(string s) {
+        if(s.empty())
+        return 0;
+        else if(s.size()==1)
+        return num(s[0]);
+        
+        //string a=s.substr(1);
+        //int n=romanToInt(a);
+
+        if(num(s[0])>=num(s[1]))
+        {
+           return num(s[0])+romanToInt(s.substr(1));
+        }
+        else
+        return (num(s[1])-num(s[0]))+romanToInt(s.substr(2));
+
+    }
+};
