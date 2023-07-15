@@ -1,0 +1,30 @@
+#include<cstring>
+class Solution {
+    private: 
+    bool checkStringHelper(string s,int size)
+    {
+        if(size==1)
+       return true;
+
+       if(s[size-1]=='b')
+       {
+           if(s[size-2]=='b'|| s[size-2]=='a')
+           return checkStringHelper(s,size-1);
+       } 
+       else if(s[size-1]=='a')
+       {
+           if(size==1)
+           return true;
+           else if(s[size-2]=='a')
+           return checkStringHelper(s,size-1);
+           else if(s[size-2]=='b')
+           return false;
+       }
+       return false;
+    }
+public:
+    
+    bool checkString(string s) {
+       return checkStringHelper(s,s.size());
+    }
+};
