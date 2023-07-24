@@ -1,0 +1,36 @@
+class Solution {
+public:
+    int jump(vector<int>& nums) {
+      int count=0;
+     for(int j=0;j<nums.size();){
+       
+       if(j+nums[j]>=nums.size()-1)
+       {
+         if(nums.size()==1)
+         return count;
+         else
+         return count+1;
+       }
+         
+         else{
+         int maxr=-1;//
+       int maxi=-1;//
+       int f=0;
+       for(int i=j+1;i<=j+nums[j];i++)
+       {f=1;
+         if(i+nums[i]>=maxr)
+         {maxr=i+nums[i];
+         maxi=i;}
+        
+
+       }
+       if(f==0)
+       break;
+       else if(maxr<=j+nums[j] && nums[j+nums[j]]>maxr)
+       {count++;j=j+nums[j];}
+       else
+          {count++;j=maxi;} }}
+       
+   return count;
+    }
+};
