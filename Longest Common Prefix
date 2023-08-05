@@ -1,0 +1,32 @@
+class Solution {
+public:
+    string longestCommonPrefix(vector<string>& strs) {
+       string s=strs[0];
+       int f=0;
+
+       if(strs.size()==1)
+       return strs[0];
+       while(s!=""){
+       for(int i=1;i<strs.size();i++)
+       {
+          if(strs[i].find(s)==string::npos ||strs[i].find(s)!=0)
+          {f=0;break;}
+          else 
+          f=1;
+        //   else
+        //   {
+        //       f=0;
+        //       break;
+        //   } 
+
+       }
+       if(f==1)
+       return s;
+       else
+       {
+           s.erase(s.begin()+s.size()-1);
+       }
+        }
+        return "";
+    }
+};
