@@ -1,0 +1,56 @@
+class Solution {
+public:
+    string convert(string s, int numRows) {
+        double size_of_pattern=2*(numRows-1);
+        int column;
+       
+        if(size_of_pattern!=0)
+        column=ceil(s.length()/size_of_pattern)*(numRows-1);
+        else
+        return s;
+        
+        int string_pointer=0;
+        
+        int ans[numRows][column];
+
+        int k=numRows-1;
+
+        for(int i=0;i<column;i++)
+        {
+            for(int j=0;j<numRows;j++)
+            {
+                int l;
+                if(i%k==0)
+                {
+                    l=i;
+                    if(string_pointer<s.length())
+                    ans[j][i]=s[string_pointer++];
+                    else
+                    ans[j][i]='$';
+                }
+                else if(i+j==l+k)
+                {
+                    if(string_pointer<s.length())
+                    ans[j][i]=s[string_pointer++];
+                    else
+                    ans[j][i]='$';
+                }
+                else
+                ans[j][i]='$';
+            }
+        }
+         string v="";
+        for(int i=0;i<numRows;i++)
+        {
+            for(int j=0;j<column;j++)
+            {
+                if(ans[i][j]!='$')
+                v+=ans[i][j];
+                
+            }
+            
+        }
+
+        return v;
+    }
+};
