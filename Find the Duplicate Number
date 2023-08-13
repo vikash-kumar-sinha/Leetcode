@@ -1,0 +1,55 @@
+class Solution {
+public:
+    int countn(vector<int> nums,int mid)
+        {
+            int count=0;
+            for(int i=0;i<nums.size();i++)
+            {
+                if(nums[i]<=mid)
+                count++;
+            }
+            return count;
+        }
+
+    int findDuplicate(vector<int>& nums) {
+        //method 1 but stuck in case 2,2,2,2,2
+        // int sum=0;
+        // for(int i=0;i<nums.size();i++)
+        // sum+=nums[i];
+
+        // return sum-(((nums.size()-1)*(nums.size()))/2);
+
+        //method 2 it takes lots of space
+        // int ans;
+        // int f[1000000]={0};
+        // for(int i=0;i<1000000;i++)
+        // f[nums[i]]++;
+
+        // for(int i=0;i<;i++)
+        // if(f[i]>1)
+        // {
+        //     ans=i;
+        //     break;
+        // }
+        // return ans;
+        
+
+        //method 3 best approach seen solution
+        int l=0;
+        int h=nums.size()-1;
+        int mid;
+
+        while(l<h)
+        {
+            mid=l+(h-l)/2;
+            if(countn(nums,mid)>mid)
+            h=mid;
+            else
+            l=mid+1;
+        }
+        return l;
+        
+
+
+    }
+};
